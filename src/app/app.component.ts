@@ -1,54 +1,62 @@
 import { Component } from '@angular/core';
-import { url } from 'inspector';
-import { Alert } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
+
 })
 export class AppComponent {
   title = 'proyectoFinalAngular';
-  comprobar = false;
-  // arrayOpacidades = [0,0,0,0,0,0,0,0];
-  myArray = ['asce.jpg', 'kaydo.jpg', 'shanks.jpg', 'trafalgar.jpg', 'asce.jpg', 'kaydo.jpg', 'shanks.jpg', 'trafalgar.jpg']; 
+  myArray = ['asce.jpg', 'asce.jpg', 'shanks.jpg', 'shanks.jpg', 'kaydo.jpg', 'kaydo.jpg', 'trafalgar.jpg', 'trafalgar.jpg'];
+  arrayFondo = ['fondo.jpg'];
+  cartasDestapadas = [];
+  tengoQueTapar = false;
+  arrayTapar = [false, false, false, false, false, false, false, false]; 
   
-  constructor (){
+  // segundoClick = ;
+
+  constructor() {
     this.shuffle();
   }
 
-  // posicionFilaInicial = [[false,false,false]];
+  comprobarFotos(event) {
+    let id = parseInt(event.target.id) -1;
+    console.log(event.target.id);
+    this.arrayTapar[id] = true;
+    this.cartasDestapadas.push(id);
+    console.log(this.cartasDestapadas);
 
-  // primero iniciaremos el juego
-
-  // set_imagen() {
-  //   //recoges el valor del campo oculto
-  //   var valor = document.getElementById("juego");
-  //   //pones la imagen en la celda
-  //   document.getElementById("juego").innerHTML =
-  //   "<img src='" + valor + "asce.jpg' alt=''>";
-  //   }
-
-  
-  barajarCartas() {
-    let random = this.myArray[Math.floor(Math.random() * this.myArray.length)];
-    console.log(random)
+    if (this.cartasDestapadas.length == 2) {
+      let i = this.cartasDestapadas[0] 
+      let j = this.cartasDestapadas[1]
+      
+        if (this.myArray[i] === this.myArray[j]) {
+          this.cartasDestapadas = [];
+        }else{
+          this.cartasDestapadas = [];
+          setTimeout( ()=>{
+            this.arrayTapar[i] = false;
+            this.arrayTapar[j] = false;
+            this.tengoQueTapar = true;
+          },2000);
+        }
+    }
   }
 
-  sacarId(event) {
-    let identificar = event.target.id;
-    console.log(identificar);
-    // let random = this.myArray[Math.floor(Math.random() * this.myArray.length)];
-    // console.log(random)
-  
-  }
+    // sonIguales(event){
+    //   if (this.myArray[0]===this.myArray[1]) {
+    //      console.log("funciona maquina");
+    //   }else{
+    //     console.log("no")
+    //   }
+    // }
 
-  repartirImagenes(){
-    var posicion = document.getElementById("piece1")
-      posicion.style.opacity="1";
-    
-  }
   
+
+
+
+
   shuffle() {
     for (let index = this.myArray.length - 1; index >= 0; index--) {
       let numRandom = Math.floor(Math.random() * index)
@@ -58,14 +66,6 @@ export class AppComponent {
     }
   }
 }
-//   drawContentPuzzle(posicion) {
-//     for (let i = 0; i < posicion.length; i++) {
-//       document.getElementById('piece'+i).style.backgroundPosition = posicion[i][0]+'px '+posicion[i][1]+'px';
-//     }
-// }
-
-// }
-
 
 
 

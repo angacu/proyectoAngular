@@ -7,29 +7,33 @@
 </div> -->
 <!-- <h2>Bienvenido a nuestro juego: </h2>
 <img src="../assets/img/kaydo.jpg" alt="imagen" width="200px" height="200px"> -->
+<body>
   <div id="juego">
-      <table>
-          <tr>
-              <!-- *ngIf="posicion==='Victor'" -->
-              <!-- pasamos el objeto especial event -->
-            <!-- <img src="../assets/img/asce.jpg">Asce</img>> -->
-            <td id="piece1" class="letra" (click)="sacarId($event)"> <img src="assets/img/{{ myArray[0]}}"></td>
-            <td id="piece2" class="letra" (click)="sacarId($event)"> <img src="assets/img/{{ myArray[1]}}"> </td>
-            <td id="piece3" class="letra" (click)="sacarId($event)"> <img src="assets/img/{{ myArray[2]}}"> </td>
-            <td id="piece4" class="letra" (click)="sacarId($event)"> <img src="assets/img/{{ myArray[3]}}"> </td>
-          </tr>
-      
-          <tr>
-            <td id="piece5" class="letra" (click)="sacarId($event)"> <img src="assets/img/{{ myArray[4]}}"> </td>
-            <td id="piece6" class="letra" (click)="sacarId($event)"> <img src="assets/img/{{ myArray[5]}}"> </td>
-            <td id="piece7" class="letra" (click)="sacarId($event)"> <img src="assets/img/{{ myArray[6]}}"> </td>
-            <td id="piece8" class="letra" (click)="sacarId($event)"> <img src="assets/img/{{ myArray[7]}}"> </td>
-          </tr>
-        </table>
-  </div>
+    <table>
+        <tr>
+            <!-- *ngIf="posicion==='Victor'" -->
+            <!-- pasamos el objeto especial event -->
+          <!-- <img src="../assets/img/asce.jpg">Asce</img>> -->
+          <td class="letra"> <img id="1" (click)="comprobarFotos($event)" src="assets/img/{{ arrayTapar[0]  ? myArray[0] : 'fondo.jpg'}}"> </td>
+          <td class="letra"> <img id="2" (click)="comprobarFotos($event)" src="assets/img/{{ arrayTapar[1]  ? myArray[1] : 'fondo.jpg'}}"> </td>
+          <td class="letra"> <img id="3" (click)="comprobarFotos($event)" src="assets/img/{{ arrayTapar[2]  ? myArray[2] : 'fondo.jpg'}}"> </td>
+          <td class="letra"> <img id="4" (click)="comprobarFotos($event)" src="assets/img/{{ arrayTapar[3]  ? myArray[3] : 'fondo.jpg'}}"> </td>
+        </tr>
+    
+        <tr>
+          <td class="letra"> <img id="5" (click)="comprobarFotos($event)"  src="assets/img/{{ arrayTapar[4]  ? myArray[4] : 'fondo.jpg'}}"> </td>
+          <td class="letra"> <img id="6" (click)="comprobarFotos($event)" src="assets/img/{{ arrayTapar[5]  ? myArray[5] : 'fondo.jpg'}}"> </td>
+          <td class="letra"> <img id="7" (click)="comprobarFotos($event)" src="assets/img/{{ arrayTapar[6]  ? myArray[6] : 'fondo.jpg'}}"> </td>
+          <td class="letra"> <img id="8" (click)="comprobarFotos($event)" src="assets/img/{{ arrayTapar[7]  ? myArray[7] : 'fondo.jpg'}}"> </td>
+        </tr>
+      </table>
+</div>
 
-  <!-- <button (click)="iniciarJuego()">Iniciar</button>
-  <br>
-  <button (click)="reiniciarJuego()">Reiniciar</button> -->
+<!-- <button (click)="iniciarJuego()">Iniciar</button>
+<br>
+<button (click)="reiniciarJuego()">Reiniciar</button> -->
 
 <router-outlet></router-outlet>
+
+</body>
+  
